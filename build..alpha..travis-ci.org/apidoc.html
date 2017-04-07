@@ -1,0 +1,760 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/danielstjules/jsinspect"
+
+    >jsinspect (v0.12.4)</a>
+</h1>
+<h4>Detect structural similarities in your code</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.jsinspect">module jsinspect</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsinspect.Inspector">
+            function <span class="apidocSignatureSpan">jsinspect.</span>Inspector
+            <span class="apidocSignatureSpan">(filePaths, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">jsinspect.</span>helpers</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">jsinspect.</span>parser</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">jsinspect.</span>reporters</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.jsinspect.helpers">module jsinspect.helpers</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsinspect.helpers.captureOutput">
+            function <span class="apidocSignatureSpan">jsinspect.helpers.</span>captureOutput
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsinspect.helpers.collectMatches">
+            function <span class="apidocSignatureSpan">jsinspect.helpers.</span>collectMatches
+            <span class="apidocSignatureSpan">(inspector)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsinspect.helpers.getOutput">
+            function <span class="apidocSignatureSpan">jsinspect.helpers.</span>getOutput
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsinspect.helpers.parse">
+            function <span class="apidocSignatureSpan">jsinspect.helpers.</span>parse
+            <span class="apidocSignatureSpan">(filePath)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsinspect.helpers.restoreOutput">
+            function <span class="apidocSignatureSpan">jsinspect.helpers.</span>restoreOutput
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsinspect.helpers.trimlines">
+            function <span class="apidocSignatureSpan">jsinspect.helpers.</span>trimlines
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.jsinspect.parser">module jsinspect.parser</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsinspect.parser.parse">
+            function <span class="apidocSignatureSpan">jsinspect.parser.</span>parse
+            <span class="apidocSignatureSpan">(src, filePath)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.jsinspect.reporters">module jsinspect.reporters</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsinspect.reporters.default">
+            function <span class="apidocSignatureSpan">jsinspect.reporters.</span>default
+            <span class="apidocSignatureSpan">(inspector, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsinspect.reporters.json">
+            function <span class="apidocSignatureSpan">jsinspect.reporters.</span>json
+            <span class="apidocSignatureSpan">(inspector, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jsinspect.reporters.pmd">
+            function <span class="apidocSignatureSpan">jsinspect.reporters.</span>pmd
+            <span class="apidocSignatureSpan">(inspector, opts)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.jsinspect" id="apidoc.module.jsinspect">module jsinspect</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.jsinspect.Inspector" id="apidoc.element.jsinspect.Inspector">
+        function <span class="apidocSignatureSpan">jsinspect.</span>Inspector
+        <span class="apidocSignatureSpan">(filePaths, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class Inspector extends EventEmitter {
+<span class="apidocCodeCommentSpan">  /**
+   * Creates a new Inspector, which extends EventEmitter. filePaths is expected
+   * to be an array of string paths. Also accepts an options object with any
+   * combination of the following: threshold, identifiers literals, and
+   * minInstances. Threshold indicates the minimum number of nodes to analyze.
+   * Identifiers indicates whether or not the nodes in a match should also have
+   * matching identifiers, and literals whether or not literal values should
+   * match. minInstances specifies the min number of instances for a match.
+   * An instance of Inspector emits the following events: start, match and end.
+   *
+   * @constructor
+   * @extends EventEmitter
+   *
+   * @param {string[]} filePaths The files on which to run the inspector
+   * @param {object}   [opts]    Options to set for the inspector
+   */
+</span>  constructor(filePaths, opts) {
+    super();
+    opts = opts || {};
+
+    this._filePaths    = filePaths || [];
+    this._threshold    = opts.threshold || 30;
+    this._identifiers  = opts.identifiers;
+    this._literals     = opts.literals;
+    this._minInstances = opts.minInstances || 2;
+    this._map          = Object.create(null);
+    this._fileContents = {};
+    this._traversals   = {};
+    this.numFiles      = this._filePaths.length;
+  }
+
+  /**
+   * Runs the inspector on the given file paths, as provided in the constructor.
+   * Emits a start event, followed by a series of match events for any detected
+   * similarities, and an end event on completion.
+   *
+   * @fires Inspector#start
+   * @fires Inspector#match
+   * @fires Inspector#end
+   */
+  run() {
+    this.emit(&#x27;start&#x27;);
+
+    // File contents are split to allow for specific line extraction
+    this._filePaths.forEach((filePath) =&#x3e; {
+      var src = fs.readFileSync(filePath, {encoding: &#x27;utf8&#x27;});
+      this._fileContents[filePath] = src.split(&#x27;\n&#x27;);
+      try {
+        var syntaxTree = parse(src, filePath);
+      } catch (err) {
+        return console.error(err.message);
+      }
+      this._traversals[filePath] = NodeUtils.getDFSTraversal(syntaxTree);
+      this._walk(syntaxTree, (nodes) =&#x3e; this._insert(nodes));
+    });
+
+    this._analyze();
+    this.emit(&#x27;end&#x27;);
+  }
+
+  /**
+   * Walks a given node&#x27;s AST, building up arrays of nodes that meet the
+   * inspector&#x27;s threshold. When found, the callback is invoked and passed
+   * the array of nodes.
+   *
+   * @private
+   *
+   * @param {Node}     node The node to traverse
+   * @param {function} fn   The callback to invoke
+   */
+  _walk(node, fn) {
+    NodeUtils.walkSubtrees(node, (node, parent, ancestors) =&#x3e; {
+      var state = ancestors.concat(node);
+      if (NodeUtils.isAMD(state) ||
+          NodeUtils.isCommonJS(state) ||
+          NodeUtils.isES6ModuleImport(state) ||
+          NodeUtils.isES6ClassBoilerplate(state)) {
+        return;
+      }
+
+      var nodes = NodeUtils.getDFSTraversal(node, this._threshold);
+      if (nodes.length === this._threshold) {
+        fn(nodes);
+      }
+
+      this._walkSiblings(node, fn);
+    });
+  }
+
+  /**
+   * Walks sibling nodes under a parent, grouping their DFS traversals, and
+   * invoking the callback for those that wouldn&#x27;t otherwise meet the threshold.
+   * Helpful for nodes like BlockStatements that hold a sequence. Note that
+   * this will generate overlapping instances, and so _omitOverlappingInstances
+   * helps cleanup the results.
+   *
+   * @private
+   *
+   * @param {Node}     node The node to traverse
+   * @param {function} fn   The callback to invoke
+   */
+  _walkSiblings(parent, fn) {
+    // group siblings that wouldn&#x27;t otherwise meet threshold
+    var children = NodeUtils.getChildren(parent);
+    var n = this._threshold;
+
+    for (let i = 0; i &#x3c; children.length - 1; i++) {
+      let nodes = NodeUtils.getDFSTraversal(children[i], n);
+      if (nodes.length === n) continue;
+
+      for (let j = i + 1; j &#x3c; children.length; j++) {
+        nodes = nodes.concat(NodeUtils.getDFSTraversal(children[j], n));
+        if (nodes.length &#x3e;= n) {
+          fn(nodes.slice(0, n));
+          break;
+        }
+      }
+    }
+  }
+
+  /** ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.jsinspect.helpers" id="apidoc.module.jsinspect.helpers">module jsinspect.helpers</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.jsinspect.helpers.captureOutput" id="apidoc.element.jsinspect.helpers.captureOutput">
+        function <span class="apidocSignatureSpan">jsinspect.helpers.</span>captureOutput
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">captureOutput = function () {
+  chalk.enabled = false;
+  output = &#x27;&#x27;;
+  process.stdout.write = function(string) {
+    if (!string) return;
+    output += string;
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsinspect.helpers.collectMatches" id="apidoc.element.jsinspect.helpers.collectMatches">
+        function <span class="apidocSignatureSpan">jsinspect.helpers.</span>collectMatches
+        <span class="apidocSignatureSpan">(inspector)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">collectMatches = function (inspector) {
+  var array = [];
+  inspector.on(&#x27;match&#x27;, function(match) {
+    array.push(match);
+  });
+  return array;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsinspect.helpers.getOutput" id="apidoc.element.jsinspect.helpers.getOutput">
+        function <span class="apidocSignatureSpan">jsinspect.helpers.</span>getOutput
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getOutput = function () {
+  return output;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsinspect.helpers.parse" id="apidoc.element.jsinspect.helpers.parse">
+        function <span class="apidocSignatureSpan">jsinspect.helpers.</span>parse
+        <span class="apidocSignatureSpan">(filePath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (filePath) {
+  if (parseCache[filePath]) return parseCache[filePath];
+
+  // Skip the root Program node
+  var src = fs.readFileSync(filePath, {encoding: &#x27;utf8&#x27;});
+  var ast = parse(src, filePath).body;
+  parseCache[filePath] = ast;
+
+  return ast;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  } catch (err) {
+    if (i === fns.length - 1) throw err;
+  }
+}
+}
+
+function _parse(src, filePath, sourceType) {
+return babylon.<span class="apidocCodeKeywordSpan">parse</span>(src, {
+  allowReturnOutsideFunction: true,
+  allowImportExportEverywhere: true,
+  sourceType: sourceType,
+  sourceFilename: filePath,
+  plugins: [&#x27;jsx&#x27;, &#x27;flow&#x27;, &#x27;doExpressions&#x27;, &#x27;objectRestSpread&#x27;, &#x27;decorators&#x27;,
+    &#x27;classProperties&#x27;, &#x27;exportExtensions&#x27;, &#x27;asyncGenerators&#x27;, &#x27;functionBind&#x27;,
+    &#x27;functionSent&#x27;, &#x27;dynamicImport&#x27;]
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsinspect.helpers.restoreOutput" id="apidoc.element.jsinspect.helpers.restoreOutput">
+        function <span class="apidocSignatureSpan">jsinspect.helpers.</span>restoreOutput
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">restoreOutput = function () {
+  chalk.enabled = enabled;
+  process.stdout.write = write;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsinspect.helpers.trimlines" id="apidoc.element.jsinspect.helpers.trimlines">
+        function <span class="apidocSignatureSpan">jsinspect.helpers.</span>trimlines
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">trimlines = function (str) {
+  return str.split(&#x27;\n&#x27;).map(str =&#x3e; str.trim()).join(&#x27;\n&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.jsinspect.parser" id="apidoc.module.jsinspect.parser">module jsinspect.parser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.jsinspect.parser.parse" id="apidoc.element.jsinspect.parser.parse">
+        function <span class="apidocSignatureSpan">jsinspect.parser.</span>parse
+        <span class="apidocSignatureSpan">(src, filePath)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (src, filePath) {
+  debug(`parsing ${filePath}`);
+  try {
+    return attempt(
+      () =&#x3e; _parse(src, filePath, &#x27;script&#x27;),
+      () =&#x3e; _parse(src, filePath, &#x27;module&#x27;)
+    );
+  } catch (err) {
+    let ctx = getErrorContext(err, src);
+    throw new Error(`Couldn&#x27;t parse ${filePath}: ${err.message}${ctx}`);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  } catch (err) {
+    if (i === fns.length - 1) throw err;
+  }
+}
+}
+
+function _parse(src, filePath, sourceType) {
+return babylon.<span class="apidocCodeKeywordSpan">parse</span>(src, {
+  allowReturnOutsideFunction: true,
+  allowImportExportEverywhere: true,
+  sourceType: sourceType,
+  sourceFilename: filePath,
+  plugins: [&#x27;jsx&#x27;, &#x27;flow&#x27;, &#x27;doExpressions&#x27;, &#x27;objectRestSpread&#x27;, &#x27;decorators&#x27;,
+    &#x27;classProperties&#x27;, &#x27;exportExtensions&#x27;, &#x27;asyncGenerators&#x27;, &#x27;functionBind&#x27;,
+    &#x27;functionSent&#x27;, &#x27;dynamicImport&#x27;]
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.jsinspect.reporters" id="apidoc.module.jsinspect.reporters">module jsinspect.reporters</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.jsinspect.reporters.default" id="apidoc.element.jsinspect.reporters.default">
+        function <span class="apidocSignatureSpan">jsinspect.reporters.</span>default
+        <span class="apidocSignatureSpan">(inspector, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class DefaultReporter extends BaseReporter {
+<span class="apidocCodeCommentSpan">  /**
+   * The default reporter, which displays both file and line information for
+   * each given match.
+   *
+   * @constructor
+   *
+   * @param {Inspector} inspector Instance on which to register its listeners
+   * @param {object}    opts      Options to set for the reporter
+   */
+</span>  constructor(inspector, opts) {
+    opts = opts || {};
+    super(inspector, opts);
+    this._registerSummary();
+  }
+
+  /**
+   * Returns the string output to print for the given reporter. The string
+   * contains the number of instances associated with the match and the files
+   * and lines involved.
+   *
+   * @private
+   *
+   * @param   {Match}  match The inspector match to output
+   * @returns {string} The formatted output
+   */
+  _getOutput(match) {
+    var instances = match.instances;
+    var output = &#x27;\n&#x27; + &#x27;-&#x27;.repeat(60) + &#x27;\n\n&#x27; +
+      chalk.bold(`Match - ${instances.length} instances\n`);
+
+    instances.forEach((instance) =&#x3e; {
+      var location = this._getFormattedLocation(instance);
+      var lines = this._getLines(instance);
+      output += `\n${location}\n${chalk.grey(lines)}\n`;
+    });
+
+    return output;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsinspect.reporters.json" id="apidoc.element.jsinspect.reporters.json">
+        function <span class="apidocSignatureSpan">jsinspect.reporters.</span>json
+        <span class="apidocSignatureSpan">(inspector, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class JSONReporter extends BaseReporter {
+<span class="apidocCodeCommentSpan">  /**
+   * A JSON reporter, which displays both file and line information for
+   * each given match.
+   *
+   * @constructor
+   *
+   * @param {Inspector} inspector Instance on which to register its listeners
+   * @param {object}    opts      Options to set for the reporter
+   */
+</span>  constructor(inspector, opts) {
+    opts = opts || {};
+    super(inspector, opts);
+
+    var enabled = chalk.enabled;
+
+    inspector.on(&#x27;start&#x27;, () =&#x3e; {
+      chalk.enabled = false;
+      this._writableStream.write(&#x27;[&#x27;);
+    });
+
+    inspector.on(&#x27;end&#x27;, () =&#x3e; {
+      chalk.enabled = enabled;
+      this._writableStream.write(&#x27;]\n&#x27;);
+    });
+  }
+
+  /**
+   * Returns the string output to print for the given reporter. The formatted
+   * JSON string contains the number of instances associated with the match and
+   * the files and lines involved.
+   *
+   * @private
+   *
+   * @param   {Match}  match The inspector match to output
+   * @returns {string} The formatted output
+   */
+  _getOutput(match) {
+    var output = (this._found &#x3e; 1) ? &#x27;,\n&#x27; : &#x27;&#x27;;
+
+    output += JSON.stringify({
+      id: match.hash,
+      instances: match.instances.map(instance =&#x3e; {
+        return {
+          path: this._getRelativePath(instance.filename),
+          lines: [instance.start.line, instance.end.line],
+          code: this._getLines(instance)
+        };
+      })
+    });
+
+    return output;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.jsinspect.reporters.pmd" id="apidoc.element.jsinspect.reporters.pmd">
+        function <span class="apidocSignatureSpan">jsinspect.reporters.</span>pmd
+        <span class="apidocSignatureSpan">(inspector, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">class PMDReporter extends BaseReporter {
+<span class="apidocCodeCommentSpan">  /**
+   * A PMD CPD XML reporter, which tries to fit jsinspect&#x27;s output to something
+   * CI tools might expect from PMD.
+   *
+   * @constructor
+   *
+   * @param {Inspector} inspector Instance on which to register its listeners
+   * @param {object}    opts      Options to set for the reporter
+   */
+</span>  constructor(inspector, opts) {
+    opts = opts || {};
+    super(inspector, opts);
+
+    var enabled = chalk.enabled;
+
+    inspector.on(&#x27;start&#x27;, () =&#x3e; {
+      chalk.enabled = false;
+      this._writableStream.write(
+        &#x27;&#x3c;?xml version=&#x22;1.0&#x22; encoding=&#x22;utf-8&#x22;?&#x3e;\n&#x27; +
+        &#x27;&#x3c;pmd-cpd&#x3e;\n&#x27;
+      );
+    });
+
+    inspector.on(&#x27;end&#x27;, () =&#x3e; {
+      chalk.enabled = enabled;
+      this._writableStream.write(&#x27;&#x3c;/pmd-cpd&#x3e;\n&#x27;);
+    });
+  }
+
+  /**
+   * Returns an XML string containing a &#x3c;duplication&#x3e; element, with &#x3c;file&#x3e;
+   * children indicating the instance locations, and &#x3c;codefragment&#x3e; to hold the
+   * lines.
+   *
+   * @private
+   *
+   * @param   {Match}  match The inspector match to output
+   * @returns {string} The formatted output
+   */
+  _getOutput(match) {
+    var output = (this._found &#x3e; 1) ? &#x27;\n&#x27; : &#x27;&#x27;;
+    var codeFragment = &#x27;&#x27;;
+    var instances = match.instances;
+    var totalLines = this._getTotalLines(match);
+
+    output += `&#x3c;duplication lines=&#x22;${totalLines}&#x22; id=&#x22;${match.hash}&#x22;&#x3e;\n`;
+    instances.forEach((instance) =&#x3e; output += this._getFile(instance));
+
+    output += &#x27;&#x3c;codefragment&#x3e;&#x27;;
+    instances.forEach((instance) =&#x3e; {
+      var location = this._getFormattedLocation(instance);
+      var lines = this._getLines(instance);
+      codeFragment += `\n${location}\n${chalk.grey(lines)}\n`;
+    });
+    output += `${this._escape(codeFragment)}&#x3c;/codefragment&#x3e;\n&#x3c;/duplication&#x3e;\n`;
+
+    return output;
+  }
+
+  /**
+   * Returns the total number of lines spanned by a match.
+   *
+   * @param   {Match} match
+   * @returns {int}
+   */
+  _getTotalLines(match) {
+    return match.instances.reduce((res, curr) =&#x3e; {
+      return res + curr.end.line - curr.start.line + 1;
+    }, 0);
+  }
+
+  /**
+   * Returns an XML string containing the path to the file in which the instance
+   * is located, as well as its starting line. Absolute paths are required for
+   * Jenkins.
+   *
+   * @param   {object} instance
+   * @returns {string}
+   */
+  _getFile(instance) {
+    var filePath = this._getAbsolutePath(instance.filename);
+    return `&#x3c;file path=&#x22;${filePath}&#x22; line=&#x22;${instance.start.line}&#x22;/&#x3e;\n`;
+  }
+
+  /**
+   * Returns an escaped string for use within XML.
+   *
+   * @param   {string} string The string to escape
+   * @returns {string} The escaped string
+   */
+  _escape(string) {
+    var escaped = {
+      &#x22;&#x27;&#x22;: &#x27;&#x26;apos;&#x27;,
+      &#x27;&#x22;&#x27;: &#x27;&#x26;quot;&#x27;,
+      &#x27;&#x26;&#x27;: &#x27;&#x26;amp;&#x27;,
+      &#x27;&#x3e;&#x27;: &#x27;&#x26;gt;&#x27;,
+      &#x27;&#x3c;&#x27;: &#x27;&#x26;lt;&#x27;
+    };
+
+    return string.replace(/([&#x27;&#x22;&#x26;&#x3e;&#x3c;])/g, (string, char) =&#x3e; {
+      return escaped[char];
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
