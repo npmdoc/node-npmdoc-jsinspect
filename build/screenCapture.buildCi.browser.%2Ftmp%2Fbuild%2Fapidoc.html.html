@@ -351,7 +351,23 @@
     output += string;
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+_getOutput() {}
+}
+
+describe('BaseReporter', function() {
+var inspector, reporter;
+
+beforeEach(function() {
+  helpers.<span class="apidocCodeKeywordSpan">captureOutput</span>();
+  inspector = new Inspector([fixtures.intersection], {
+    threshold: 15
+  });
+  reporter = new TestReporter(inspector);
+});
+
+afterEach(function() {
+...</pre></li>
     </ul>
 
 
@@ -370,7 +386,22 @@
   });
   return array;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    });
+
+    it('prints the instances and their location', function() {
+var inspector = new Inspector([fixtures.smallLines], {
+  threshold: 1
+});
+var reporter = new JSONReporter(inspector);
+var matches = helpers.<span class="apidocCodeKeywordSpan">collectMatches</span>(inspector);
+
+inspector.removeAllListeners('start');
+inspector.removeAllListeners('end');
+
+inspector.run();
+helpers.restoreOutput();
+...</pre></li>
     </ul>
 
 
@@ -385,7 +416,23 @@
     <li>description and source-code<pre class="apidocCodePre">getOutput = function () {
   return output;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  it('invokes _getOutput', function() {
+    reporter._getOutput = function(match) {
+      return match;
+    };
+
+    inspector.emit('match', 'invoked');
+    helpers.restoreOutput();
+    expect(helpers.<span class="apidocCodeKeywordSpan">getOutput</span>()).to.be('invoked');
+  });
+});
+
+describe('summary', function() {
+  it('can be printed on inspector end', function() {
+    inspector.run();
+    helpers.restoreOutput();
+...</pre></li>
     </ul>
 
 
@@ -439,7 +486,22 @@ return babylon.<span class="apidocCodeKeywordSpan">parse</span>(src, {
   chalk.enabled = enabled;
   process.stdout.write = write;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  inspector = new Inspector([fixtures.intersection], {
+    threshold: 15
+  });
+  reporter = new TestReporter(inspector);
+});
+
+afterEach(function() {
+  helpers.<span class="apidocCodeKeywordSpan">restoreOutput</span>();
+});
+
+describe('constructor', function() {
+  it('accepts an inspector as an argument', function() {
+    expect(reporter._inspector).to.be(inspector);
+  });
+...</pre></li>
     </ul>
 
 
@@ -454,7 +516,23 @@ return babylon.<span class="apidocCodeKeywordSpan">parse</span>(src, {
     <li>description and source-code<pre class="apidocCodePre">trimlines = function (str) {
   return str.split('\n').map(str =&gt; str.trim()).join('\n');
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+inspector.removeAllListeners('start');
+inspector.removeAllListeners('end');
+
+inspector.run();
+helpers.restoreOutput();
+
+var expected = helpers.<span class="apidocCodeKeywordSpan">trimlines</span>(
+  `&lt;duplication lines="3" id="${matches[0].hash}"&gt;
+  &lt;file path="${fixtures.smallLines}" line="1"/&gt;
+  &lt;file path="${fixtures.smallLines}" line="2"/&gt;
+  &lt;file path="${fixtures.smallLines}" line="3"/&gt;
+  &lt;codefragment&gt;
+  spec/fixtures/smallLines.js:1,1
+  test = function() { return 1; };
+...</pre></li>
     </ul>
 
 
